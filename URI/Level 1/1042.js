@@ -1,38 +1,39 @@
 let input = require("fs").readFileSync("stdin", "utf-8");
 
-let values = input.split(' ').map(value => parseInt(value));
+let [A, B, C] = input.split(' ').map(value => parseInt(value));
+let menor;
+ 
+if (!menor) {
+    menor = Math.min(A, B, C);
+    console.log(menor);
+} 
 
-values.map(() => {
-    if (values[0] < values[1] && values[0] < values[2]) {
-        console.log(values[0]);
-        values.shift();
+if (menor === A) {
+    if (B < C) {
+        console.log(B);
+        console.log(C);
+    } else {
+        console.log(C);
+        console.log(B);
     }
-
-    if (values[1] < values[0] && values[1] < values[2]) {
-        console.log(values[1]);
+} else if (menor === B) {
+    if (A < C) {
+        console.log(A);
+        console.log(C);
+    } else {
+        console.log(C);
+        console.log(A);
     }
-
-    if (values[2] < values[0] && values[2] < values[1]) {
-        console.log(values[2]);
-        values.pop();
+} else if (menor === C) {
+    if (A < B) {
+        console.log(A);
+        console.log(B);
+    } else {
+        console.log(B);
+        console.log(A);
     }
-});
+}
 
-
-console.log('\n' + values[0]);
-console.log(values[1]);
-console.log(values[2]);
-
-
-// for (let i = 0; i < values.length; i++) {
-    
-//     for (let j = i + 1; j < values.length; j++) {
-//         if (values[j] < values[i])
-//             menor = values[j];
-//             values[j] = values[i];
-//             values[i] = menor;
-//     }
-    
-// }
-
-// values.sort();
+console.log('\n' + A);
+console.log(B);
+console.log(C);
