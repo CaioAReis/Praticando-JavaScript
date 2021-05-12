@@ -4,11 +4,7 @@ let [ A, B, C ] = input.split(' ').map(value => parseFloat(value));
 
 [ A, B, C] = [ A, B, C ].sort((a,b) => b-a);
 
-console.log(A)
-console.log(B)
-console.log(C)
-
-if (A >= B + C)
+if (A >= B + C) 
     console.log('NAO FORMA TRIANGULO');
 else {
     if (A*A === B*B + C*C)
@@ -20,7 +16,7 @@ else {
     if (A*A < B*B + C*C)
         console.log('TRIANGULO ACUTANGULO');
 
-    if (A === B === C)
+    if (A === B && A === C)
         console.log('TRIANGULO EQUILATERO');
 
     if (A === B && A !== C || B === C  && B !== A || C === A && C !== B)
