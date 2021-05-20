@@ -10,21 +10,48 @@ dayEnd = parseInt(dayEnd.replace('Dia ', '').replace(',',''));
 [hourEnd = 0, minEnd = 0, secEnd = 0] = hourEnd.split(' : ')
     .map(value => parseInt(value));
 
-let timeFinal = 
-(((dayEnd*24)*60) + hourEnd*60 + minEnd + secEnd/60) - (((dayStart*24)*60) + hourStart*60 + minStart + secStart/60);
+let secEvent = 0;
+let minEvent = 0;
+let hourEvent = 0;
+let dayEvent = 0;
 
-if (timeFinal <= 0)
-    timeFinal += 24*60;
+while (secStart !== secEnd) {
+    secStart === 59 ? secStart = 0 : secStart++;
+    secEvent++;
+}
 
-console.log((timeFinal/60)/24);
-console.log((timeFinal/60)%24);
-let dayEvent = parseInt((timeFinal/60)/24);
-let hourEvent = parseInt(((timeFinal/60)%24));
-let minEvent = parseInt(((timeFinal/60)%24) * 60);
-let secEvent = parseInt(minEvent / 60);
+while (minStart !== minEnd) {
+    minStart === 59 ? minStart = 0 : minStart++;
+    minEvent++;
+}
 
-// if (hourEvent >= 24) hourEvent = 0;
-// else dayEvent--;
+while (hourStart !== hourEnd) {
+    hourEvent === 23 ? hourStart = 0 : hourStart++;
+    hourEvent++;
+}
+
+while (dayStart !== dayEnd) {
+    dayStart++;
+    dayEvent++;
+}
+
+// let timeFinal = 
+// (((dayEnd*24)*60) + hourEnd*60 + minEnd + secEnd/60) - (((dayStart*24)*60) + hourStart*60 + minStart + secStart/60);
+
+// if (timeFinal <= 0)
+//     timeFinal += 24*60;
+
+// console.log((timeFinal/60)/24);
+// console.log((timeFinal/60)%24);
+// let dayEvent = dayEnd - dayStart;
+// let hourEvent = parseInt(((timeFinal/60)%24));
+// let minEvent = parseInt(hourEvent / 60);
+// let secEvent = parseInt(minEvent / 60);
+
+// if (hourEvent >= 24) {
+//     hourEvent = 0;
+//     dayEvent++;
+// }
 
 console.log(dayEvent + ' dia(s)');
 console.log(hourEvent + ' hora(s)');
