@@ -15,25 +15,43 @@ let minEvent = 0;
 let hourEvent = 0;
 let dayEvent = 0;
 
-while (secStart !== secEnd) {
-    secStart === 59 ? secStart = 0 : secStart++;
+do {
     secEvent++;
-}
+    secStart === 59 ? secStart = 0 : secStart++;
+} while (secStart !== secEnd);
 
-while (minStart !== minEnd) {
-    minStart === 59 ? minStart = 0 : minStart++;
+if (secEvent >= 60) {
     minEvent++;
+    secEvent = 0;
 }
 
-while (hourStart !== hourEnd) {
-    hourEvent === 23 ? hourStart = 0 : hourStart++;
+do {
+    minEvent++;
+    minStart === 59 ? minStart = 0 : minStart++;
+} while (minStart !== minEnd);
+
+if (minEvent >= 60) {
     hourEvent++;
+    minEvent = 0;
+}
+
+do {
+    hourEvent++;
+    hourStart === 23 ? hourStart = 0 : hourStart++;
+} while (hourStart !== hourEnd);
+
+if (hourEvent >= 24) {
+    dayEvent++;
+    hourEvent = 0;
 }
 
 while (dayStart !== dayEnd) {
     dayStart++;
     dayEvent++;
 }
+
+if (hourEvent > 0 && dayEvent > 0)
+    dayEvent--;
 
 // let timeFinal = 
 // (((dayEnd*24)*60) + hourEnd*60 + minEnd + secEnd/60) - (((dayStart*24)*60) + hourStart*60 + minStart + secStart/60);
