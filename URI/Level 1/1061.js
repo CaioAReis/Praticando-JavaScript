@@ -17,17 +17,43 @@ let dayEvent = 0;
 
 while (secStart !== secEnd) {
     secEvent++;
-    secStart === 61 ? secStart = 1 : secStart++;
+    if (secEvent === 60) {
+        secEvent = 0;
+        minEvent++;
+        minStart++;
+    }
+    if (secStart === 60) {
+        secStart = 0;
+    } 
+        secStart++;
 }
 
 while (minStart !== minEnd) {
     minEvent++;
-    minStart === 61 ? minStart = 1 : minStart++;
+    if (minEvent === 60) {
+        minEvent = 0;
+        hourEvent++;
+        hourStart++;
+    }
+    if (minStart === 60) {
+        minStart = 0;
+        hourStart++;
+    } 
+        minStart++;
 }
 
 while (hourStart !== hourEnd) {
     hourEvent++;
-    hourStart === 25 ? hourStart = 1 : hourStart++;
+    if (hourEvent === 24) {
+        hourEvent = 0;
+        dayEvent++;
+        dayStart++;
+    }
+    if (hourStart === 24) {
+        hourStart = 0;
+        dayStart++;
+    }
+        hourStart++;
 }
 
 while (dayStart !== dayEnd) {
