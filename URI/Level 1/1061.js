@@ -11,29 +11,49 @@ dayEnd = parseInt(dayEnd.replace('Dia ', '').replace(',',''));
     .map(value => parseInt(value));
 
 let secEvent = 0;
-let minEvent = 0;
+let minEvent = minStart > minEnd ? -1 : 0;
 let hourEvent = 0;
 let dayEvent = 0;
 
 while (secStart !== secEnd) {
-    if (secStart === 60)
-        secStart = 0;
     secEvent++;
-    secStart++;
+    if (secEvent === 60) {
+        secEvent = 0;
+        minEvent++;
+        minStart++;
+    }
+    if (secStart === 60) {
+        secStart = 0;
+    } 
+        secStart++;
 }
 
 while (minStart !== minEnd) {
-    if (minStart === 60) 
-        minStart = 0;
     minEvent++;
-    minStart++;
+    if (minEvent === 60) {
+        minEvent = 0;
+        hourEvent++;
+        hourStart++;
+    }
+    if (minStart === 60) {
+        minStart = 0;
+        hourStart++;
+    } 
+        minStart++;
 }
 
 while (hourStart !== hourEnd) {
-    if (hourStart === 24)
-        hourStart = 0;
     hourEvent++;
-    hourStart++;
+    if (hourEvent === 24) {
+        hourEvent = 0;
+        dayEvent++;
+        dayStart++;
+    }
+    if (hourStart === 24) {
+        hourStart = 0;
+        dayStart++;
+    }
+        hourStart++;
 }
 
 while (dayStart !== dayEnd) {
