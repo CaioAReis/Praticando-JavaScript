@@ -10,50 +10,30 @@ dayEnd = parseInt(dayEnd.replace('Dia ', '').replace(',',''));
 [hourEnd = 0, minEnd = 0, secEnd = 0] = hourEnd.split(' : ')
     .map(value => parseInt(value));
 
-let secEvent = secStart > secEnd ? -1 : 0;
-let minEvent = minStart > minEnd ? -1 : 0;
-let hourEvent = hourStart > hourEnd ? -1 : 0;
+let secEvent = 0;
+let minEvent = 0;
+let hourEvent = 0;
 let dayEvent = 0;
 
 while (secStart !== secEnd) {
-    secEvent++;
-    if (secEvent === 60) {
-        secEvent = 0;
-        minEvent++;
-        minStart++;
-    }
-    if (secStart === 60) {
+    if (secStart === 60)
         secStart = 0;
-    } 
-        secStart++;
+    secEvent++;
+    secStart++;
 }
 
 while (minStart !== minEnd) {
-    minEvent++;
-    if (minEvent === 60) {
-        minEvent = 0;
-        hourEvent++;
-        hourStart++;
-    }
-    if (minStart === 60) {
+    if (minStart === 60) 
         minStart = 0;
-        hourStart++;
-    } 
-        minStart++;
+    minEvent++;
+    minStart++;
 }
 
 while (hourStart !== hourEnd) {
-    hourEvent++;
-    if (hourEvent === 24) {
-        hourEvent = 0;
-        dayEvent++;
-        dayStart++;
-    }
-    if (hourStart === 24) {
+    if (hourStart === 24)
         hourStart = 0;
-        dayStart++;
-    }
-        hourStart++;
+    hourEvent++;
+    hourStart++;
 }
 
 while (dayStart !== dayEnd) {
