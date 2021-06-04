@@ -4,10 +4,8 @@ let [ X, Y ] = input.split('\n').map(value => parseInt(value));
 let sum = 0;
 
 
+
 if (X !== Y) {
-    if (X > 0 && Y < 0) Y = Math.abs(Y);
-    else if (X < 0 && Y > 0) Math.abs(X);
-    
     if (Y < X) {
         do {
             if (Math.abs(Y % 2) !== 0)
@@ -24,5 +22,5 @@ if (X !== Y) {
         } while (X < Y);
     }
 }
-
+ 
 console.log(sum);
